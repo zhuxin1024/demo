@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.domain.User;
-import com.example.demo.mapper.UserMapper;
+import com.example.demo.dao.UserMapper;
 import com.example.demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
