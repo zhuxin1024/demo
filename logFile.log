@@ -1,0 +1,5 @@
+08:34:00 [http-nio-8080-exec-1] INFO  c.e.d.controller.HelloController - 保存结果：1
+08:34:10 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Written [1] as "text/html" using [org.springframework.http.converter.StringHttpMessageConverter@1257579]
+08:34:10 [http-nio-8080-exec-1] DEBUG o.s.w.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+08:34:10 [http-nio-8080-exec-1] DEBUG o.s.w.servlet.DispatcherServlet - Successfully completed request
+08:34:10 [http-nio-8080-exec-1] DEBUG o.s.b.w.f.OrderedRequestContextFilter - Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@9cf923
