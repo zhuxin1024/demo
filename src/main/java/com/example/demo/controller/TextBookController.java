@@ -105,25 +105,6 @@ public class TextBookController {
         return new ModelAndView("redirect:http://127.0.0.1:8080/textBook/index");
     }
 
-    @RequestMapping(value = "/textBooks")
-    public ModelAndView getTextBook() {
-        ModelAndView mav = new ModelAndView("home1");
-        /*DBQueryRequest dbQueryRequest = initTeamWorkQueryParam(request, mav);
-        List<TextBook> textBooks = textBookService.listByTextBook(dbQueryRequest);
-        mav.addObject("tblist", textBooks);*/
-        return mav;
-    }
-
-    @RequestMapping(value = "/saveUser")
-    @ResponseBody
-    public String saveUser(@RequestParam String name, String pass) {
-        User user = new User();
-        user.setName(name);
-        user.setPass(pass);
-        int s = userService.insert(user);
-        logger.info("保存结果：" + s);
-        return JSONObject.toJSONString(s);
-    }
 
     private DBQueryRequest initTeamWorkQueryParam(HttpServletRequest request, ModelAndView modelAndView, String title) {
         DBQueryRequest dbQueryRequest = new DBQueryRequest();

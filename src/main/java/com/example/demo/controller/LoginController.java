@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by zhuxin5 on 2018/2/26.
- * 教材controller
+ * 登录controller
  */
 @Controller("loginController")
 @RequestMapping("/login")
@@ -86,55 +86,4 @@ public class LoginController {
         return new ModelAndView("redirect:http://127.0.0.1:8080/login");
     }
 
-    @RequestMapping(value = "/save")
-    @ResponseBody
-    public ModelAndView save(TextBook tx) {
-        ResponseResult result = new ResponseResult();
-        if (tx != null) {
-            result = textBookService.save(tx);
-        }
-        return new ModelAndView("redirect:http://127.0.0.1:8080/textBook/index");
-    }
-
-    @RequestMapping(value = "/textBooks")
-    public ModelAndView getTextBook() {
-        ModelAndView mav = new ModelAndView("home1");
-        /*DBQueryRequest dbQueryRequest = initTeamWorkQueryParam(request, mav);
-        List<TextBook> textBooks = textBookService.listByTextBook(dbQueryRequest);
-        mav.addObject("tblist", textBooks);*/
-        return mav;
-    }
-
-    @RequestMapping(value = "/saveUser")
-    @ResponseBody
-    public String saveUser(@RequestParam String name, String pass) {
-        User user = new User();
-        user.setName(name);
-        user.setPass(pass);
-        int s = userService.insert(user);
-        logger.info("保存结果：" + s);
-        return JSONObject.toJSONString(s);
-    }
-
-    private DBQueryRequest initTeamWorkQueryParam(HttpServletRequest request, ModelAndView modelAndView, String title) {
-        DBQueryRequest dbQueryRequest = new DBQueryRequest();
-
-        String currentPage = request.getParameter("currentPage");
-        String pageSize = request.getParameter("pageSize");
-        if (MyUtil.isBlank(currentPage))
-            currentPage = Pagination.DEFAULT_PAGE_NO_STRING;
-        if (MyUtil.isBlank(pageSize))
-            pageSize = Pagination.DEFAULT_PAGE_SIZE_STRING;
-
-        if (MyUtil.isNotEmpty(title)) {
-            dbQueryRequest.put("title", title);
-        }
-
-        Pagination page = new Pagination(
-                MyUtil.toInt(currentPage, MyUtil.toInt(Pagination.DEFAULT_PAGE_NO_STRING)),
-                MyUtil.toInt(pageSize, MyUtil.toInt(Pagination.DEFAULT_PAGE_SIZE_STRING)));
-        dbQueryRequest.setPage(page);
-        modelAndView.addObject("page", page);
-        return dbQueryRequest;
-    }
 }

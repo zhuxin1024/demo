@@ -123,35 +123,6 @@ public class ReserveController {
         return new ModelAndView("redirect:http://127.0.0.1:8080/reserve/index");
     }
 
-    @RequestMapping(value = "/info")
-    public ModelAndView info(Long id) {
-        ModelAndView mv = new ModelAndView("textbookinfo");
-        TextBook textBook = textBookService.selectById(id);
-        mv.addObject("info", textBook);
-        return mv;
-    }
-
-
-    @RequestMapping(value = "/textBooks")
-    public ModelAndView getTextBook() {
-        ModelAndView mav = new ModelAndView("home1");
-        /*DBQueryRequest dbQueryRequest = initTeamWorkQueryParam(request, mav);
-        List<TextBook> textBooks = textBookService.listByTextBook(dbQueryRequest);
-        mav.addObject("tblist", textBooks);*/
-        return mav;
-    }
-
-    @RequestMapping(value = "/saveUser")
-    @ResponseBody
-    public String saveUser(@RequestParam String name, String pass) {
-        User user = new User();
-        user.setName(name);
-        user.setPass(pass);
-        int s = userService.insert(user);
-        logger.info("保存结果：" + s);
-        return JSONObject.toJSONString(s);
-    }
-
     private DBQueryRequest initTeamWorkQueryParam(HttpServletRequest request, ModelAndView modelAndView, Long tid, int status) {
         DBQueryRequest dbQueryRequest = new DBQueryRequest();
 
