@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService{
     public int delete(Long id) {
         return userMapper.delete(id);
     }
+
+    @Override
+    public User check(String number, String password, int type) {
+        return userMapper.check(number, password, type);
+    }
 }

@@ -10,6 +10,9 @@ public interface UserMapper {
     @Select("select * from user where id = #{id}")
     User selectById(@Param("id") Long id);
 
+    @Select("select * from user where number = #{number} and password = #{password} and type = #{type}")
+    User check(@Param("number") String number, @Param("password") String password, @Param("type") int type);
+
     @Insert("insert into user(name, number, pass, type) values(#{name}, #{number}, #{pass}, #{type})")
     int insert(User user);
 
